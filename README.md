@@ -1,5 +1,6 @@
 # glimmer-docgen-typescript
 
+Extract information from Glimmer components to generate documentation using typescript parser/checker.
 
 ## Compatibility
 

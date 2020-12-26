@@ -2,7 +2,7 @@
   "name": "glimmer-docgen-typescript",
   "version": "0.0.0",
   "private": false,
-  "description": "TODO",
+  "description": "Extract information from Glimmer components to generate documentation using typescript parser/checker",
   "repository": "https://github.com/josemarluedke/glimmer-docgen-typescript",
   "license": "MIT",
   "author": "Josemar Luedke <josemarluedke@gmail.com>",
