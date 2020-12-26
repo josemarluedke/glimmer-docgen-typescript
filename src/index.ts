@@ -1,9 +1,9 @@
 import path from 'path';
-import fs from 'fs';
 import glob from 'fast-glob';
 import * as ts from 'typescript';
 import Parser from './parser';
-import { Options, Source, ArgumentItem, ComponentDoc } from './types';
+import { getCompilerOptionsFromTSConfig, sortArgs } from './utils';
+import { Options, Source, ComponentDoc } from './types';
 
 const DEFAULT_IGNORE = [
   '/**/node_modules/**',
@@ -14,7 +14,7 @@ const DEFAULT_IGNORE = [
   'dist/**'
 ];
 
-export default function DocGen(sources: Source[]): ComponentDoc[] {
+export function parse(sources: Source[]): ComponentDoc[] {
   const components: ComponentDoc[] = [];
 
   sources.forEach((source) => {
@@ -86,49 +86,4 @@ export default function DocGen(sources: Source[]): ComponentDoc[] {
   return components;
 }
 
-function sortArgs(args: ArgumentItem[]): ArgumentItem[] {
-  return args.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-
-    return 0;
-  });
-}
-
-function getCompilerOptionsFromTSConfig(
-  tsconfigPath: string,
-  sourceRoot: string
-): ts.CompilerOptions {
-  if (!path.isAbsolute(tsconfigPath)) {
-    tsconfigPath = path.join(sourceRoot, tsconfigPath);
-  }
-
-  const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) =>
-    fs.readFileSync(filename, 'utf8')
-  );
-
-  if (error !== undefined) {
-    const errorText = `Cannot load custom tsconfig.json from provided path: ${tsconfigPath}, with error code: ${error.code}, message: ${error.messageText}`;
-    throw new Error(errorText);
-  }
-
-  const { options, errors } = ts.parseJsonConfigFileContent(
-    config,
-    ts.sys,
-    basePath,
-    {},
-    tsconfigPath
-  );
-
-  if (errors && errors.length) {
-    throw errors[0];
-  }
-  return options;
-}
+export default { parse };

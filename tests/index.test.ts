@@ -1,11 +1,11 @@
-import DocGen from '../src';
+import docgen from '../src';
 import path from 'path';
 
 const root = path.resolve(__dirname, './__fixtures__');
 
 describe('DocGen', () => {
   test('it should work for TypeScript files', async () => {
-    const result = DocGen([
+    const result = docgen.parse([
       {
         root,
         pattern: '**/*.ts'
@@ -15,7 +15,7 @@ describe('DocGen', () => {
   });
 
   test('it should work for JavaScript files when using allowJS', async () => {
-    const result = DocGen([
+    const result = docgen.parse([
       {
         root,
         pattern: '**/*.js',
