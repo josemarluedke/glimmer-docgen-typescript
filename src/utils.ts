@@ -4,18 +4,22 @@ import { ArgumentItem } from './types';
 import * as ts from 'typescript';
 
 export function sortArgs(args: ArgumentItem[]): ArgumentItem[] {
-  return args.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
+  return args
+    .sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
 
-    return 0;
-  });
+      return 0;
+    })
+    .sort((a, b) => {
+      return a.isRequired === b.isRequired ? 0 : a.isRequired ? -1 : 1;
+    });
 }
 
 export function getCompilerOptionsFromTSConfig(
