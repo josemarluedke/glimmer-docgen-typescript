@@ -86,6 +86,16 @@ Array [
   Object {
     "args": Array [
       Object {
+        "defaultValue": undefined,
+        "description": "",
+        "isRequired": true,
+        "name": "size",
+        "tags": Object {},
+        "type": Object {
+          "name": "string",
+        },
+      },
+      Object {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
         "isRequired": false,
@@ -137,16 +147,6 @@ It allows the consumer to render a link for example",
         "tags": Object {},
         "type": Object {
           "name": "boolean",
-        },
-      },
-      Object {
-        "defaultValue": undefined,
-        "description": "",
-        "isRequired": true,
-        "name": "size",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
         },
       },
       Object {
@@ -184,6 +184,16 @@ It allows the consumer to render a link for example",
   Object {
     "args": Array [
       Object {
+        "defaultValue": undefined,
+        "description": "",
+        "isRequired": true,
+        "name": "size",
+        "tags": Object {},
+        "type": Object {
+          "name": "string",
+        },
+      },
+      Object {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
         "isRequired": false,
@@ -235,16 +245,6 @@ It allows the consumer to render a link for example",
         "tags": Object {},
         "type": Object {
           "name": "boolean",
-        },
-      },
-      Object {
-        "defaultValue": undefined,
-        "description": "",
-        "isRequired": true,
-        "name": "size",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
         },
       },
       Object {
