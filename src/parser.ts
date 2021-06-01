@@ -79,7 +79,7 @@ export default class Parser {
   isRequired(symbol: ts.Symbol): boolean {
     const isOptional = (symbol.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
-    const hasQuestionToken = symbol.declarations.every((d) => {
+    const hasQuestionToken = symbol.declarations?.every((d) => {
       if (ts.isPropertySignature(d) || ts.isPropertyDeclaration(d)) {
         return d.questionToken;
       }
@@ -109,7 +109,15 @@ export default class Parser {
     const tagMap: Record<string, DocumentationTag> = {};
 
     tags.forEach((tag) => {
-      const trimmedText = (tag.text || '').trim();
+      let text = '';
+      // fallback for typescript < 4.3
+      if (typeof tag.text == 'string') {
+        text = tag.text;
+      } else if (typeof tag.text === 'object') {
+        text = tag.text.map((v) => v.text).join(' ');
+      }
+
+      const trimmedText = text.trim();
 
       if (tagMap[tag.name]) {
         tagMap[tag.name].value += '\n' + trimmedText;

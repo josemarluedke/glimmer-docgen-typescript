@@ -8,7 +8,7 @@ function inspect(obj: unknown): void {
 }
 
 (async function (): Promise<void> {
-  const components = docgen([
+  const components = docgen.parse([
     // {
     // root: path.resolve(
     // path.join(__dirname, '../../../../../frontile/packages/core/addon')
