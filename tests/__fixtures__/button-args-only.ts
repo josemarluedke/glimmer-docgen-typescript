@@ -31,16 +31,8 @@ interface ButtonArgs {
   size: string;
 }
 
-interface Signature {
-  Args: ButtonArgs;
-  Blocks: {
-    default: [{ classNames: string }];
-  };
-  Element: HTMLButtonElement;
-}
-
 /**
  * The button component
  * @since 1.0.0
  */
-export default class Button extends Component<Signature> { }
+export default class Button extends Component<ButtonArgs> { }

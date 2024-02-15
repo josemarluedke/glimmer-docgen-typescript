@@ -33,6 +33,104 @@ exports[`DocGen it should work for TypeScript files 1`] = `
   {
     "args": [
       {
+        "defaultValue": undefined,
+        "description": "",
+        "isRequired": true,
+        "name": "size",
+        "tags": {},
+        "type": {
+          "name": "string",
+        },
+      },
+      {
+        "defaultValue": "'default'",
+        "description": "The appearance of the button",
+        "isRequired": false,
+        "name": "appearance",
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "'default'",
+          },
+        },
+        "type": {
+          "name": "enum",
+          "options": [
+            "'default'",
+            "'outlined'",
+            "'minimal'",
+          ],
+          "raw": ""default" | "outlined" | "minimal"",
+        },
+      },
+      {
+        "defaultValue": "'primary'",
+        "description": "The intent of the button",
+        "isRequired": false,
+        "name": "intent",
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "'primary'",
+          },
+        },
+        "type": {
+          "name": "enum",
+          "options": [
+            "'primary'",
+            "'success'",
+            "'warning'",
+            "'danger'",
+          ],
+          "raw": ""primary" | "success" | "warning" | "danger"",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "If the button is renderless
+It allows the consumer to render a link for example",
+        "isRequired": false,
+        "name": "isRenderless",
+        "tags": {},
+        "type": {
+          "name": "boolean",
+        },
+      },
+      {
+        "defaultValue": "'button'",
+        "description": "The HTML type of the button",
+        "isRequired": false,
+        "name": "type",
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "'button'",
+          },
+        },
+        "type": {
+          "name": "enum",
+          "options": [
+            "'button'",
+            "'submit'",
+            "'reset'",
+          ],
+          "raw": ""button" | "submit" | "reset"",
+        },
+      },
+    ],
+    "description": "The button component",
+    "fileName": "button-args-only.ts",
+    "name": "Button",
+    "tags": {
+      "since": {
+        "name": "since",
+        "value": "1.0.0",
+      },
+    },
+  },
+  {
+    "args": [
+      {
         "defaultValue": "'md'",
         "description": "The size",
         "isRequired": false,
