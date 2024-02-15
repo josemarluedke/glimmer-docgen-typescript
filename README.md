@@ -2,10 +2,14 @@
 
 Extract information from Glimmer components to generate documentation using typescript parser/checker.
 
+- It works sign signature interface (Args, Blocks, Element);
+- It works with Glint and `gts` files;
+
+
 ## Compatibility
 
-* Node.js v10 or above
-* TypeScript v4.0 or above
+* Node.js v20 or above
+* TypeScript v5.0 or above
 
 ## Installation
 
@@ -66,6 +70,21 @@ docgen.parse([
     }
   }
 ]);
+
+// Glint
+
+docgen.parse([
+  {
+    root: __dirname,
+    pattern: 'declarations/components/**/*.d.ts',
+    options: {
+      compilerOptions: {
+        allowJs: true
+        // ....
+      }
+    }
+  }
+]);
 ```
 
 ## Example
@@ -108,111 +127,152 @@ interface DrawerArgs {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 
+interface DrawerSignature {
+  Args: DrawerArgs;
+  Blocks: {
+    default: [{ header: unkown, body: unkown, footer: unkown }]
+  };
+  Element: HTMLDivElement;
+}
+
 /**
  * The component description here
  *
  * @since 1.0.0
  */
-export default class Drawer extends Component<DrawerArgs> {}
+export default class Drawer extends Component<DrawerSignature> {}
 ```
 
 ### Output
 
 Here is the output:
 
-```json
+```js
 [
   {
-    "name": "Drawer",
-    "fileName": "app/components/drawer.ts",
-    "args": [
+    package: 'unknown',
+    module: 'drawer',
+    name: 'Drawer',
+    fileName: 'drawer.ts',
+    Args: [
       {
-        "name": "allowClosing",
-        "type": {
-          "name": "boolean"
-        },
-        "isRequired": false,
-        "description": "If set to false, closing will be prevented",
-        "tags": {
-          "defaultValue": {
-            "name": "defaultValue",
-            "value": "true"
-          }
-        },
-        "defaultValue": "true"
+        identifier: 'isOpen',
+        type: { type: 'boolean' },
+        isRequired: true,
+        isInternal: false,
+        description: 'If the Drawer is open',
+        tags: {},
+        defaultValue: undefined
       },
       {
-        "name": "isOpen",
-        "type": {
-          "name": "boolean"
-        },
-        "isRequired": true,
-        "description": "If the Drawer is open",
-        "tags": {}
+        identifier: 'onClose',
+        type: { type: '(event: Event) => void' },
+        isRequired: true,
+        isInternal: false,
+        description: 'This called when Drawer should be closed',
+        tags: {},
+        defaultValue: undefined
       },
       {
-        "name": "onClose",
-        "type": {
-          "name": "(event: Event) => void"
+        identifier: 'size',
+        type: {
+          type: 'enum',
+          raw: '"xs" | "sm" | "md" | "lg" | "xl" | "full"',
+          items: [ "'xs'", "'sm'", "'md'", "'lg'", "'xl'", "'full'" ]
         },
-        "isRequired": true,
-        "description": "This called when Drawer should be closed",
-        "tags": {}
+        isRequired: true,
+        isInternal: false,
+        description: 'The Drawer size.',
+        tags: { defaultValue: { name: 'defaultValue', value: '`md`' } },
+        defaultValue: '`md`'
       },
       {
-        "name": "placement",
-        "type": {
-          "name": "enum",
-          "raw": "\"top\" | \"bottom\" | \"left\" | \"right\"",
-          "options": [
-            "'top'",
-            "'bottom'",
-            "'left'",
-            "'right'"
-          ]
-        },
-        "isRequired": false,
-        "description": "The Drawer can appear from any side of the screen. The 'placement'\noption allows to choose where it appears from.",
-        "tags": {
-          "defaultValue": {
-            "name": "defaultValue",
-            "value": "`right`"
-          }
-        },
-        "defaultValue": "`right`"
+        identifier: 'allowClosing',
+        type: { type: 'boolean' },
+        isRequired: false,
+        isInternal: false,
+        description: 'If set to false, closing will be prevented',
+        tags: { defaultValue: { name: 'defaultValue', value: 'true' } },
+        defaultValue: 'true'
       },
       {
-        "name": "size",
-        "type": {
-          "name": "enum",
-          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"",
-          "options": [
-            "'xs'",
-            "'sm'",
-            "'md'",
-            "'lg'",
-            "'xl'",
-            "'full'"
-          ]
+        identifier: 'placement',
+        type: {
+          type: 'enum',
+          raw: '"top" | "bottom" | "left" | "right"',
+          items: [ "'top'", "'bottom'", "'left'", "'right'" ]
         },
-        "isRequired": true,
-        "description": "The Drawer size.",
-        "tags": {
-          "defaultValue": {
-            "name": "defaultValue",
-            "value": "`md`"
-          }
-        },
-        "defaultValue": "`md`"
+        isRequired: false,
+        isInternal: false,
+        description: "The Drawer can appear from any side of the screen. The 'placement'\n" +
+          'option allows to choose where it appears from.',
+        tags: { defaultValue: { name: 'defaultValue', value: '`right`' } },
+        defaultValue: '`right`'
       }
     ],
-    "description": "The component description here",
-    "tags": {
-      "since": {
-        "name": "since",
-        "value": "1.0.0"
+    Blocks: [
+      {
+        identifier: 'default',
+        type: {
+          type: 'Array',
+          raw: '[{ header: unknown; body: unknown; footer: unknown; }]',
+          items: [
+            {
+              identifier: '0',
+              type: {
+                type: 'Object',
+                items: [
+                  {
+                    identifier: 'header',
+                    type: { type: 'unknown' },
+                    isRequired: true,
+                    isInternal: false,
+                    description: '',
+                    tags: {},
+                    defaultValue: undefined
+                  },
+                  {
+                    identifier: 'body',
+                    type: { type: 'unknown' },
+                    isRequired: true,
+                    isInternal: false,
+                    description: '',
+                    tags: {},
+                    defaultValue: undefined
+                  },
+                  {
+                    identifier: 'footer',
+                    type: { type: 'unknown' },
+                    isRequired: true,
+                    isInternal: false,
+                    description: '',
+                    tags: {},
+                    defaultValue: undefined
+                  }
+                ]
+              },
+              isRequired: true,
+              isInternal: false,
+              description: '',
+              tags: {}
+            }
+          ]
+        },
+        isRequired: true,
+        isInternal: false,
+        description: '',
+        tags: {},
+        defaultValue: undefined
       }
-    }
+    ],
+    Element: {
+      identifier: 'Element',
+      type: { type: 'HTMLDivElement' },
+      description: '',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement'
+    },
+    description: 'The component description here',
+    tags: { since: { name: 'since', value: '1.0.0' } }
   }
 ]
 ```

@@ -31,7 +31,7 @@ interface ButtonArgs {
   size: string;
 }
 
-interface Signature {
+export interface ButtonSignature {
   Args: ButtonArgs;
   Blocks: {
     default: [{ classNames: string }];
@@ -43,4 +43,4 @@ interface Signature {
  * The button component
  * @since 1.0.0
  */
-export default class Button extends Component<Signature> { }
+export default class Button extends Component<ButtonSignature> {}

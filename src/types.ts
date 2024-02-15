@@ -43,21 +43,32 @@ export interface DocumentationComment {
   tags: Record<string, DocumentationTag>;
 }
 
-export interface ArgumentItem {
-  name: string;
-  type: ArgumentItemType;
+export interface Property extends DocumentationComment {
+  identifier: string;
+  type: PropertyType;
   isRequired: boolean;
-  defaultValue?: string;
+  isInternal: boolean;
 }
 
-export interface ArgumentItemType {
-  name: string;
+export interface ElementProperty {
+  identifier: string;
+  type: PropertyType;
+  description: string;
+  url: string;
+}
+
+export interface PropertyType {
+  type: string;
   raw?: string;
-  options?: string[];
+  items?: string[] | Property[];
 }
 
 export interface ComponentDoc extends DocumentationComment {
+  package: string;
+  module: string;
   name: string;
   fileName: string;
-  args: ArgumentItem[];
+  Args: Property[];
+  Blocks: Property[];
+  Element: ElementProperty | undefined;
 }

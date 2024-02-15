@@ -17,6 +17,7 @@ function inspect(obj: unknown): void {
     // }
     {
       options: {
+        // tsconfigPath: 'packages/buttons/tsconfig.json',
         compilerOptions: {
           allowJs: true
         }
@@ -24,8 +25,20 @@ function inspect(obj: unknown): void {
       // root: path.resolve(path.join(__dirname, '__fixtures__')),
       // pattern: 'test.js'
       root: path.resolve(path.join(__dirname, '../../frontile')),
-      pattern: '**/addon/**/components/**/*.ts'
+      pattern: 'packages/*/declarations/components/*.d.ts'
     }
+    // {
+    //   options: {
+    //     // tsconfigPath: 'packages/buttons/tsconfig.json',
+    //     compilerOptions: {
+    //       allowJs: true
+    //     }
+    //   },
+    //   // root: path.resolve(path.join(__dirname, '__fixtures__')),
+    //   // pattern: 'test.js'
+    //   root: path.resolve(path.join(__dirname, '__fixtures__')),
+    //   pattern: 'drawer.ts'
+    // }
   ]);
 
   // const data = JSON.stringify(components, null, 2);
