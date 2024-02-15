@@ -5,8 +5,16 @@ interface ButtonArgs {
   appearance: string;
 }
 
-// eslint-disable-next-line
-class NotExportedButton extends Component<ButtonArgs> {}
+interface Signature {
+  Args: ButtonArgs;
+  Blocks: {
+    default: [{ classNames: string }];
+  };
+  Element: HTMLButtonElement;
+}
 
-export class ButtonNotDefault extends Component<ButtonArgs> {}
-export default class ButtonDefault extends Component<ButtonArgs> {}
+// eslint-disable-next-line
+class NotExportedButton extends Component<Signature> { }
+
+export class ButtonNotDefault extends Component<Signature> { }
+export default class ButtonDefault extends Component<Signature> { }

@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { ArgumentItem } from './types';
+import { Property } from './types';
 import * as ts from 'typescript';
 
-export function sortArgs(args: ArgumentItem[]): ArgumentItem[] {
+export function sortArgs(args: Property[]): Property[] {
   return args
     .sort((a, b) => {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
+      const nameA = a.identifier.toUpperCase();
+      const nameB = b.identifier.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }

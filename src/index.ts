@@ -49,17 +49,9 @@ export function parse(sources: Source[]): ComponentDoc[] {
           typeof sourceFile !== 'undefined'
       )
       .forEach((sourceFile) => {
-        // use class declarations that are exported
         sourceFile.statements.forEach((stmt) => {
           if (ts.isClassDeclaration(stmt)) {
-            if (stmt.modifiers) {
-              const exportModifiers = stmt.modifiers.filter(
-                (m) => m.kind == ts.SyntaxKind.ExportKeyword
-              );
-              if (exportModifiers.length > 0) {
-                maybeComponents.push(stmt);
-              }
-            }
+            maybeComponents.push(stmt);
           }
         });
       });
@@ -73,7 +65,7 @@ export function parse(sources: Source[]): ComponentDoc[] {
         .map((component) => {
           return {
             ...component,
-            args: sortArgs(component.args),
+            Args: sortArgs(component.Args),
             fileName: component.fileName.replace(
               path.join(source.root, '/'),
               ''

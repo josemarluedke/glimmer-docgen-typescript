@@ -10,4 +10,8 @@ interface ButtonArgs extends Sized {
   type?: 'button' | 'submit' | 'reset';
 }
 
-export default class ButtonWithExtendedArgs extends Component<ButtonArgs> {}
+interface Signature {
+  Args: ButtonArgs;
+}
+
+export default class ButtonWithExtendedArgs extends Component<Signature> { }

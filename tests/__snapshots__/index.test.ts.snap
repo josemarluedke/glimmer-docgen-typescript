@@ -1,25 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DocGen it should work for JavaScript files when using allowJS 1`] = `
-Array [
-  Object {
-    "args": Array [
-      Object {
-        "defaultValue": undefined,
-        "description": "",
-        "isRequired": true,
-        "name": "post",
-        "tags": Object {},
-        "type": Object {
-          "name": "{ title: string; author: string; body: string; }",
-        },
-      },
-    ],
+[
+  {
+    "Args": [],
+    "Blocks": [],
+    "Element": undefined,
     "description": "",
     "fileName": "javascript.js",
+    "module": "javascript",
     "name": "BlogPostComponent",
-    "tags": Object {
-      "extends": Object {
+    "package": "unknown",
+    "tags": {
+      "extends": {
         "name": "extends",
         "value": "Component<BlogPostArgs>",
       },
@@ -29,23 +22,39 @@ Array [
 `;
 
 exports[`DocGen it should work for TypeScript files 1`] = `
-Array [
-  Object {
-    "args": Array [
-      Object {
+[
+  {
+    "Args": [],
+    "Blocks": [],
+    "Element": undefined,
+    "description": "The button component",
+    "fileName": "button-args-only.ts",
+    "module": "button-args-only",
+    "name": "Button",
+    "package": "unknown",
+    "tags": {
+      "since": {
+        "name": "since",
+        "value": "1.0.0",
+      },
+    },
+  },
+  {
+    "Args": [
+      {
         "defaultValue": "'md'",
         "description": "The size",
+        "identifier": "size",
+        "isInternal": false,
         "isRequired": false,
-        "name": "size",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'md'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'xs'",
             "'sm'",
             "'md'",
@@ -53,282 +62,1125 @@ Array [
             "'xl'",
             "'full'",
           ],
-          "raw": "\\"xs\\" | \\"sm\\" | \\"md\\" | \\"lg\\" | \\"xl\\" | \\"full\\"",
+          "raw": ""xs" | "sm" | "md" | "lg" | "xl" | "full"",
+          "type": "enum",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
+        "identifier": "type",
+        "isInternal": false,
         "isRequired": false,
-        "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
+          "type": "enum",
         },
       },
     ],
+    "Blocks": [],
+    "Element": undefined,
     "description": "",
     "fileName": "button-with-extended-args.ts",
+    "module": "button-with-extended-args",
     "name": "ButtonWithExtendedArgs",
-    "tags": Object {},
+    "package": "unknown",
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "Args": [
+      {
         "defaultValue": undefined,
         "description": "",
+        "identifier": "size",
+        "isInternal": false,
         "isRequired": true,
-        "name": "size",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "string",
         },
       },
-      Object {
+      {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
+        "identifier": "appearance",
+        "isInternal": false,
         "isRequired": false,
-        "name": "appearance",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'default'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'default'",
             "'outlined'",
             "'minimal'",
           ],
-          "raw": "\\"default\\" | \\"outlined\\" | \\"minimal\\"",
+          "raw": ""default" | "outlined" | "minimal"",
+          "type": "enum",
         },
       },
-      Object {
+      {
         "defaultValue": "'primary'",
         "description": "The intent of the button",
+        "identifier": "intent",
+        "isInternal": false,
         "isRequired": false,
-        "name": "intent",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'primary'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'primary'",
             "'success'",
             "'warning'",
             "'danger'",
           ],
-          "raw": "\\"primary\\" | \\"success\\" | \\"warning\\" | \\"danger\\"",
+          "raw": ""primary" | "success" | "warning" | "danger"",
+          "type": "enum",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "If the button is renderless
 It allows the consumer to render a link for example",
+        "identifier": "isRenderless",
+        "isInternal": false,
         "isRequired": false,
-        "name": "isRenderless",
-        "tags": Object {},
-        "type": Object {
-          "name": "boolean",
+        "tags": {},
+        "type": {
+          "type": "boolean",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
+        "identifier": "type",
+        "isInternal": false,
         "isRequired": false,
-        "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
+          "type": "enum",
         },
       },
     ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "classNames",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ classNames: string; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
     "description": "The button component",
     "fileName": "button.ts",
+    "module": "button",
     "name": "Button",
-    "tags": Object {
-      "since": Object {
+    "package": "unknown",
+    "tags": {
+      "since": {
         "name": "since",
         "value": "1.0.0",
       },
     },
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "Args": [
+      {
         "defaultValue": undefined,
-        "description": "",
+        "description": "If the Drawer is open",
+        "identifier": "isOpen",
+        "isInternal": false,
         "isRequired": true,
-        "name": "size",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "boolean",
         },
       },
-      Object {
+      {
+        "defaultValue": undefined,
+        "description": "This called when Drawer should be closed",
+        "identifier": "onClose",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "(event: Event) => void",
+        },
+      },
+      {
+        "defaultValue": "\`md\`",
+        "description": "The Drawer size.",
+        "identifier": "size",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "\`md\`",
+          },
+        },
+        "type": {
+          "items": [
+            "'xs'",
+            "'sm'",
+            "'md'",
+            "'lg'",
+            "'xl'",
+            "'full'",
+          ],
+          "raw": ""xs" | "sm" | "md" | "lg" | "xl" | "full"",
+          "type": "enum",
+        },
+      },
+      {
+        "defaultValue": "true",
+        "description": "If set to false, closing will be prevented",
+        "identifier": "allowClosing",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "true",
+          },
+        },
+        "type": {
+          "type": "boolean",
+        },
+      },
+      {
+        "defaultValue": "\`right\`",
+        "description": "The Drawer can appear from any side of the screen. The 'placement'
+option allows to choose where it appears from.",
+        "identifier": "placement",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "\`right\`",
+          },
+        },
+        "type": {
+          "items": [
+            "'top'",
+            "'bottom'",
+            "'left'",
+            "'right'",
+          ],
+          "raw": ""top" | "bottom" | "left" | "right"",
+          "type": "enum",
+        },
+      },
+    ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "header",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "unknown",
+                    },
+                  },
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "body",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "unknown",
+                    },
+                  },
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "footer",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "unknown",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ header: unknown; body: unknown; footer: unknown; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLDivElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement",
+    },
+    "description": "The component description here",
+    "fileName": "drawer.ts",
+    "module": "drawer",
+    "name": "Drawer",
+    "package": "unknown",
+    "tags": {
+      "since": {
+        "name": "since",
+        "value": "1.0.0",
+      },
+    },
+  },
+  {
+    "Args": [
+      {
+        "defaultValue": "true",
+        "description": "Whether the dropdown should close upon selecting an item.",
+        "identifier": "closeOnItemSelect",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "true",
+          },
+        },
+        "type": {
+          "type": "boolean",
+        },
+      },
+    ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "The trigger component is yielded",
+                    "identifier": "Trigger",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "WithBoundArgs<typeof Trigger, "anchor" | "toggle" | "trigger">",
+                    },
+                  },
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "Menu",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "WithBoundArgs<typeof Menu, "toggle" | "Content" | "closeOnItemSelect">",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+            {
+              "description": "",
+              "identifier": "1",
+              "isInternal": false,
+              "isRequired": false,
+              "tags": {},
+              "type": {
+                "type": "number",
+              },
+            },
+            {
+              "description": "",
+              "identifier": "2",
+              "isInternal": false,
+              "isRequired": false,
+              "tags": {},
+              "type": {
+                "type": "string",
+              },
+            },
+          ],
+          "raw": "[{ Trigger: WithBoundArgs<typeof Trigger, "anchor" | "toggle" | "trigger">; Menu: WithBoundArgs<typeof Menu, "toggle" | "Content" | "closeOnItemSelect">; }, number, item: string]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLUListElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement",
+    },
+    "description": "",
+    "fileName": "dropdown.d.ts",
+    "module": "dropdown",
+    "name": "Dropdown",
+    "package": "unknown",
+    "tags": {},
+  },
+  {
+    "Args": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "anchor",
+        "isInternal": true,
+        "isRequired": true,
+        "tags": {
+          "internal": {
+            "name": "internal",
+            "value": "",
+          },
+        },
+        "type": {
+          "type": "ModifierLike<{ Element: HTMLElement; }>",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "class",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "unknown",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "isInGroup",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "unknown",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "size",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "string",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "toggle",
+        "isInternal": true,
+        "isRequired": true,
+        "tags": {
+          "internal": {
+            "name": "internal",
+            "value": "",
+          },
+        },
+        "type": {
+          "type": "() => void",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "trigger",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "ModifierLike<{ Element: HTMLElement; }>",
+        },
+      },
+      {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
+        "identifier": "appearance",
+        "isInternal": false,
         "isRequired": false,
-        "name": "appearance",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'default'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'default'",
             "'outlined'",
             "'minimal'",
           ],
-          "raw": "\\"default\\" | \\"outlined\\" | \\"minimal\\"",
+          "raw": ""default" | "outlined" | "minimal"",
+          "type": "enum",
         },
       },
-      Object {
+      {
         "defaultValue": "'primary'",
         "description": "The intent of the button",
+        "identifier": "intent",
+        "isInternal": false,
         "isRequired": false,
-        "name": "intent",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'primary'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'primary'",
             "'success'",
             "'warning'",
             "'danger'",
           ],
-          "raw": "\\"primary\\" | \\"success\\" | \\"warning\\" | \\"danger\\"",
+          "raw": ""primary" | "success" | "warning" | "danger"",
+          "type": "enum",
         },
       },
-      Object {
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "transition",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "Transition",
+        },
+      },
+    ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [],
+          "raw": "[]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
+    "description": "",
+    "fileName": "dropdown.d.ts",
+    "module": "dropdown",
+    "name": "Trigger",
+    "package": "unknown",
+    "tags": {},
+  },
+  {
+    "Args": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "toggle",
+        "isInternal": true,
+        "isRequired": true,
+        "tags": {
+          "internal": {
+            "name": "internal",
+            "value": "",
+          },
+        },
+        "type": {
+          "type": "() => void",
+        },
+      },
+      {
+        "defaultValue": "true",
+        "description": "",
+        "identifier": "blockScroll",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "true",
+          },
+        },
+        "type": {
+          "type": "boolean",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "closeOnItemSelect",
+        "isInternal": true,
+        "isRequired": false,
+        "tags": {
+          "internal": {
+            "name": "internal",
+            "value": "",
+          },
+        },
+        "type": {
+          "type": "boolean",
+        },
+      },
+      {
+        "defaultValue": "false",
+        "description": "",
+        "identifier": "disableFocusTrap",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "false",
+          },
+        },
+        "type": {
+          "type": "boolean",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "onAction",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "(key: string) => void",
+        },
+      },
+    ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [],
+          "raw": "[]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLUListElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement",
+    },
+    "description": "",
+    "fileName": "dropdown.d.ts",
+    "module": "dropdown",
+    "name": "Menu",
+    "package": "unknown",
+    "tags": {},
+  },
+  {
+    "Args": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "size",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "string",
+        },
+      },
+      {
+        "defaultValue": "'default'",
+        "description": "The appearance of the button",
+        "identifier": "appearance",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "'default'",
+          },
+        },
+        "type": {
+          "items": [
+            "'default'",
+            "'outlined'",
+            "'minimal'",
+          ],
+          "raw": ""default" | "outlined" | "minimal"",
+          "type": "enum",
+        },
+      },
+      {
+        "defaultValue": "'primary'",
+        "description": "The intent of the button",
+        "identifier": "intent",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {
+          "defaultValue": {
+            "name": "defaultValue",
+            "value": "'primary'",
+          },
+        },
+        "type": {
+          "items": [
+            "'primary'",
+            "'success'",
+            "'warning'",
+            "'danger'",
+          ],
+          "raw": ""primary" | "success" | "warning" | "danger"",
+          "type": "enum",
+        },
+      },
+      {
         "defaultValue": undefined,
         "description": "If the button is renderless
 It allows the consumer to render a link for example",
+        "identifier": "isRenderless",
+        "isInternal": false,
         "isRequired": false,
-        "name": "isRenderless",
-        "tags": Object {},
-        "type": Object {
-          "name": "boolean",
+        "tags": {},
+        "type": {
+          "type": "boolean",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
+        "identifier": "type",
+        "isInternal": false,
         "isRequired": false,
-        "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
-          "name": "enum",
-          "options": Array [
+        "type": {
+          "items": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
+          "type": "enum",
         },
       },
     ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "classNames",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ classNames: string; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
     "description": "This component extends the Button component",
     "fileName": "extended-button.ts",
+    "module": "extended-button",
     "name": "ExetededButton",
-    "tags": Object {},
+    "package": "unknown",
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "Args": [
+      {
         "defaultValue": undefined,
         "description": "",
+        "identifier": "appearance",
+        "isInternal": false,
         "isRequired": true,
-        "name": "appearance",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "string",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "",
+        "identifier": "type",
+        "isInternal": false,
         "isRequired": true,
-        "name": "type",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "string",
         },
       },
     ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "classNames",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ classNames: string; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
     "description": "",
     "fileName": "multiple-components.ts",
+    "module": "multiple-components",
+    "name": "NotExportedButton",
+    "package": "unknown",
+    "tags": {},
+  },
+  {
+    "Args": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "appearance",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "string",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "type",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "type": "string",
+        },
+      },
+    ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "classNames",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ classNames: string; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
+    "description": "",
+    "fileName": "multiple-components.ts",
+    "module": "multiple-components",
     "name": "ButtonNotDefault",
-    "tags": Object {},
+    "package": "unknown",
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "Args": [
+      {
         "defaultValue": undefined,
         "description": "",
+        "identifier": "appearance",
+        "isInternal": false,
         "isRequired": true,
-        "name": "appearance",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "string",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "",
+        "identifier": "type",
+        "isInternal": false,
         "isRequired": true,
-        "name": "type",
-        "tags": Object {},
-        "type": Object {
-          "name": "string",
+        "tags": {},
+        "type": {
+          "type": "string",
         },
       },
     ],
+    "Blocks": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "default",
+        "isInternal": false,
+        "isRequired": true,
+        "tags": {},
+        "type": {
+          "items": [
+            {
+              "description": "",
+              "identifier": "0",
+              "isInternal": false,
+              "isRequired": true,
+              "tags": {},
+              "type": {
+                "items": [
+                  {
+                    "defaultValue": undefined,
+                    "description": "",
+                    "identifier": "classNames",
+                    "isInternal": false,
+                    "isRequired": true,
+                    "tags": {},
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                ],
+                "type": "Object",
+              },
+            },
+          ],
+          "raw": "[{ classNames: string; }]",
+          "type": "Array",
+        },
+      },
+    ],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "HTMLButtonElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement",
+    },
     "description": "",
     "fileName": "multiple-components.ts",
+    "module": "multiple-components",
     "name": "ButtonDefault",
-    "tags": Object {},
+    "package": "unknown",
+    "tags": {},
   },
 ]
 `;
