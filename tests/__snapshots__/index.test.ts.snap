@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DocGen it should work for JavaScript files when using allowJS 1`] = `
-Array [
-  Object {
-    "args": Array [
-      Object {
+[
+  {
+    "args": [
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "post",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "{ title: string; author: string; body: string; }",
         },
       },
@@ -18,8 +18,8 @@ Array [
     "description": "",
     "fileName": "javascript.js",
     "name": "BlogPostComponent",
-    "tags": Object {
-      "extends": Object {
+    "tags": {
+      "extends": {
         "name": "extends",
         "value": "Component<BlogPostArgs>",
       },
@@ -29,23 +29,23 @@ Array [
 `;
 
 exports[`DocGen it should work for TypeScript files 1`] = `
-Array [
-  Object {
-    "args": Array [
-      Object {
+[
+  {
+    "args": [
+      {
         "defaultValue": "'md'",
         "description": "The size",
         "isRequired": false,
         "name": "size",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'md'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'xs'",
             "'sm'",
             "'md'",
@@ -53,246 +53,246 @@ Array [
             "'xl'",
             "'full'",
           ],
-          "raw": "\\"xs\\" | \\"sm\\" | \\"md\\" | \\"lg\\" | \\"xl\\" | \\"full\\"",
+          "raw": ""xs" | "sm" | "md" | "lg" | "xl" | "full"",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
         "isRequired": false,
         "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
         },
       },
     ],
     "description": "",
     "fileName": "button-with-extended-args.ts",
     "name": "ButtonWithExtendedArgs",
-    "tags": Object {},
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "args": [
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "size",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
-      Object {
+      {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
         "isRequired": false,
         "name": "appearance",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'default'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'default'",
             "'outlined'",
             "'minimal'",
           ],
-          "raw": "\\"default\\" | \\"outlined\\" | \\"minimal\\"",
+          "raw": ""default" | "outlined" | "minimal"",
         },
       },
-      Object {
+      {
         "defaultValue": "'primary'",
         "description": "The intent of the button",
         "isRequired": false,
         "name": "intent",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'primary'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'primary'",
             "'success'",
             "'warning'",
             "'danger'",
           ],
-          "raw": "\\"primary\\" | \\"success\\" | \\"warning\\" | \\"danger\\"",
+          "raw": ""primary" | "success" | "warning" | "danger"",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "If the button is renderless
 It allows the consumer to render a link for example",
         "isRequired": false,
         "name": "isRenderless",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "boolean",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
         "isRequired": false,
         "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
         },
       },
     ],
     "description": "The button component",
     "fileName": "button.ts",
     "name": "Button",
-    "tags": Object {
-      "since": Object {
+    "tags": {
+      "since": {
         "name": "since",
         "value": "1.0.0",
       },
     },
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "args": [
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "size",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
-      Object {
+      {
         "defaultValue": "'default'",
         "description": "The appearance of the button",
         "isRequired": false,
         "name": "appearance",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'default'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'default'",
             "'outlined'",
             "'minimal'",
           ],
-          "raw": "\\"default\\" | \\"outlined\\" | \\"minimal\\"",
+          "raw": ""default" | "outlined" | "minimal"",
         },
       },
-      Object {
+      {
         "defaultValue": "'primary'",
         "description": "The intent of the button",
         "isRequired": false,
         "name": "intent",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'primary'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'primary'",
             "'success'",
             "'warning'",
             "'danger'",
           ],
-          "raw": "\\"primary\\" | \\"success\\" | \\"warning\\" | \\"danger\\"",
+          "raw": ""primary" | "success" | "warning" | "danger"",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "If the button is renderless
 It allows the consumer to render a link for example",
         "isRequired": false,
         "name": "isRenderless",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "boolean",
         },
       },
-      Object {
+      {
         "defaultValue": "'button'",
         "description": "The HTML type of the button",
         "isRequired": false,
         "name": "type",
-        "tags": Object {
-          "defaultValue": Object {
+        "tags": {
+          "defaultValue": {
             "name": "defaultValue",
             "value": "'button'",
           },
         },
-        "type": Object {
+        "type": {
           "name": "enum",
-          "options": Array [
+          "options": [
             "'button'",
             "'submit'",
             "'reset'",
           ],
-          "raw": "\\"button\\" | \\"submit\\" | \\"reset\\"",
+          "raw": ""button" | "submit" | "reset"",
         },
       },
     ],
     "description": "This component extends the Button component",
     "fileName": "extended-button.ts",
     "name": "ExetededButton",
-    "tags": Object {},
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "args": [
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "appearance",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "type",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
@@ -300,27 +300,27 @@ It allows the consumer to render a link for example",
     "description": "",
     "fileName": "multiple-components.ts",
     "name": "ButtonNotDefault",
-    "tags": Object {},
+    "tags": {},
   },
-  Object {
-    "args": Array [
-      Object {
+  {
+    "args": [
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "appearance",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
-      Object {
+      {
         "defaultValue": undefined,
         "description": "",
         "isRequired": true,
         "name": "type",
-        "tags": Object {},
-        "type": Object {
+        "tags": {},
+        "type": {
           "name": "string",
         },
       },
@@ -328,7 +328,7 @@ It allows the consumer to render a link for example",
     "description": "",
     "fileName": "multiple-components.ts",
     "name": "ButtonDefault",
-    "tags": Object {},
+    "tags": {},
   },
 ]
 `;
