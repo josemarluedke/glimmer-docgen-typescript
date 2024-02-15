@@ -2,7 +2,7 @@
 
 Extract information from Glimmer components to generate documentation using typescript parser/checker.
 
-- It works sign signature interface (Args, Blocks, Element);
+- It works with signature interface (Args, Blocks, Element);
 - It works with Glint and `gts` files;
 
 
