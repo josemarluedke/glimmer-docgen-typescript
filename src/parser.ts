@@ -183,23 +183,10 @@ export default class Parser {
     parentNode: ts.Node
   ): PropertyType {
     const typeAsString = this.checker.typeToString(type);
-    if (
-      symbol &&
-      isInterfaceOrObjectWithOptionalProperties(symbol) &&
-      !/Element$/.test(symbol.getName())
-    ) {
-      const props = type.getApparentProperties();
+    if (this.isInvokableType(type)) {
       return {
-        type: 'Object',
-        items: this.getPropertiesFromSymbols(props, parentNode)
-      };
-    }
-
-    if (type.isUnion() && typeAsString !== 'boolean') {
-      return {
-        type: 'enum',
-        raw: typeAsString,
-        items: type.types.map((v) => this.getValuesFromUnionType(v))
+        type: 'function',
+        raw: typeAsString
       };
     }
 
@@ -217,6 +204,33 @@ export default class Parser {
       };
     }
 
+    if (type.isUnion() && typeAsString !== 'boolean') {
+      return {
+        type: 'enum',
+        raw: typeAsString,
+        items: type.types.map((v) => this.getValuesFromUnionType(v))
+      };
+    }
+
+    if (this.isArrayType(type)) {
+      return {
+        type: 'Array',
+        raw: typeAsString
+      };
+    }
+
+    if (
+      symbol &&
+      this.isInterfaceOrObjectWithOptionalProperties(symbol, type) &&
+      !/Element$/.test(symbol.getName())
+    ) {
+      const props = type.getApparentProperties();
+      return {
+        type: 'Object',
+        items: this.getPropertiesFromSymbols(props, parentNode)
+      };
+    }
+
     return {
       type: typeAsString
     };
@@ -230,8 +244,13 @@ export default class Parser {
   }
 
   isArrayType(type: ts.Type): boolean {
-    const kind = this.checker.getIndexTypeOfType(type, ts.IndexKind.Number);
+    const typeName = this.checker.typeToString(type);
 
+    if (typeName === 'string') {
+      return false;
+    }
+
+    const kind = this.checker.getIndexTypeOfType(type, ts.IndexKind.Number);
     // Check if the type has a numeric index signature
     return !!kind;
   }
@@ -308,28 +327,43 @@ export default class Parser {
       tags: tagMap
     };
   }
-}
 
-function isInterfaceOrObjectWithOptionalProperties(symbol: ts.Symbol): boolean {
-  const declarations = symbol.declarations;
-  if (!declarations || declarations.length === 0) {
+  isInterfaceOrObjectWithOptionalProperties(
+    symbol: ts.Symbol,
+    type: ts.Type,
+    shallow = false
+  ): boolean {
+    const declarations = symbol.declarations;
+    if (!declarations || declarations.length === 0) {
+      return false;
+    }
+
+    const declaration = declarations[0];
+    if (!declaration) {
+      return false;
+    }
+
+    if (ts.isInterfaceDeclaration(declaration)) {
+      return true;
+    }
+
+    if (ts.isTypeLiteralNode(declaration)) {
+      return declaration.members.some((member) =>
+        ts.isPropertySignature(member)
+      );
+    }
+
+    const typeSymbol = type.getSymbol();
+    if (!shallow && typeSymbol) {
+      const val = this.isInterfaceOrObjectWithOptionalProperties(
+        typeSymbol,
+        type,
+        true
+      );
+      return val;
+    }
     return false;
   }
-
-  const declaration = declarations[0];
-  if (!declaration) {
-    return false;
-  }
-
-  if (ts.isInterfaceDeclaration(declaration)) {
-    return true;
-  }
-
-  if (ts.isTypeLiteralNode(declaration)) {
-    return declaration.members.some((member) => ts.isPropertySignature(member));
-  }
-
-  return false;
 }
 
 function extractPackageAndComponent(filePath: string): {
