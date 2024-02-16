@@ -3,7 +3,14 @@ import glob from 'fast-glob';
 import * as ts from 'typescript';
 import Parser from './parser';
 import { getCompilerOptionsFromTSConfig, sortArgs } from './utils';
-import { Options, Source, ComponentDoc } from './types';
+import {
+  Options,
+  Source,
+  ComponentDoc,
+  Property,
+  PropertyType,
+  ElementProperty
+} from './types';
 
 const DEFAULT_IGNORE = [
   '/**/node_modules/**',
@@ -78,5 +85,12 @@ export function parse(sources: Source[]): ComponentDoc[] {
   return components;
 }
 
-export type { ComponentDoc };
+export type {
+  Options,
+  Source,
+  ComponentDoc,
+  Property,
+  PropertyType,
+  ElementProperty
+};
 export default { parse };

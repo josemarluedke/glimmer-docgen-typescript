@@ -48,6 +48,7 @@ export interface Property extends DocumentationComment {
   type: PropertyType;
   isRequired: boolean;
   isInternal: boolean;
+  defaultValue?: string;
 }
 
 export interface ElementProperty {
