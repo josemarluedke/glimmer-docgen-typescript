@@ -78,4 +78,5 @@ export function parse(sources: Source[]): ComponentDoc[] {
   return components;
 }
 
+export type { ComponentDoc };
 export default { parse };
