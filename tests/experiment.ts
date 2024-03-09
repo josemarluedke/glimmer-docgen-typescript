@@ -4,6 +4,7 @@ import path from 'path';
 // import fs from 'fs';
 
 function inspect(obj: unknown): void {
+  // eslint-disable-next-line
   console.log(util.inspect(obj, false, 15, true));
 }
 

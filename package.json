@@ -15,7 +15,8 @@
     "compile": "tsc",
     "prepare": "tsc",
     "test": "jest",
-    "lint:js": "eslint . --ext .js,.ts"
+    "lint:js": "eslint . --ext .js,.ts",
+    "lint:js:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
     "debug": "^4.3.4",
