@@ -16,5 +16,5 @@ interface Signature {
 // eslint-disable-next-line
 class NotExportedButton extends Component<Signature> { }
 
-export class ButtonNotDefault extends Component<Signature> { }
-export default class ButtonDefault extends Component<Signature> { }
+export class ButtonNotDefault extends Component<Signature> {}
+export default class ButtonDefault extends Component<Signature> {}

@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { type ButtonSignature } from './button';
+// eslint-disable-next-line
 import type { WithBoundArgs, ModifierLike } from '@glint/template';
 interface DropdownArgs {
   /**
@@ -8,6 +9,8 @@ interface DropdownArgs {
    * @defaultValue true
    */
   closeOnItemSelect?: boolean;
+
+  someRandomElement?: HTMLElement;
 }
 
 interface Transition {

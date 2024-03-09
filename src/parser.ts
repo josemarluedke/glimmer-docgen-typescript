@@ -219,10 +219,18 @@ export default class Parser {
       };
     }
 
+    // check if one element has string ending with Element
+    let isElement = false;
+    [symbol?.getName(), typeAsString].forEach((v) => {
+      if (v && v.endsWith('Element')) {
+        isElement = true;
+      }
+    });
+
     if (
       symbol &&
-      this.isInterfaceOrObjectWithOptionalProperties(symbol, type) &&
-      !/Element$/.test(symbol.getName())
+      !isElement &&
+      this.isInterfaceOrObjectWithOptionalProperties(symbol, type)
     ) {
       const props = type.getApparentProperties();
       return {

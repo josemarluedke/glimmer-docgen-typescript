@@ -440,6 +440,17 @@ option allows to choose where it appears from.",
           "type": "boolean",
         },
       },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "someRandomElement",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "HTMLElement",
+        },
+      },
     ],
     "Blocks": [
       {

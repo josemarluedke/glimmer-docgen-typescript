@@ -35,4 +35,4 @@ interface ButtonArgs {
  * The button component
  * @since 1.0.0
  */
-export default class Button extends Component<ButtonArgs> { }
+export default class Button extends Component<ButtonArgs> {}

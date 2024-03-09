@@ -14,4 +14,4 @@ interface Signature {
   Args: ButtonArgs;
 }
 
-export default class ButtonWithExtendedArgs extends Component<Signature> { }
+export default class ButtonWithExtendedArgs extends Component<Signature> {}
