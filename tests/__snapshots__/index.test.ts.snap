@@ -1322,5 +1322,62 @@ It allows the consumer to render a link for example",
     "package": "unknown",
     "tags": {},
   },
+  {
+    "Args": [
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "class",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "string",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "intent",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "SpinnerVariants",
+        },
+      },
+      {
+        "defaultValue": undefined,
+        "description": "",
+        "identifier": "size",
+        "isInternal": false,
+        "isRequired": false,
+        "tags": {},
+        "type": {
+          "type": "SpinnerVariants",
+        },
+      },
+    ],
+    "Blocks": [],
+    "Element": {
+      "description": "",
+      "identifier": "Element",
+      "type": {
+        "type": "SVGElement",
+      },
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/SVGElement",
+    },
+    "description": "My cool component",
+    "fileName": "spinner.d.ts",
+    "module": "spinner",
+    "name": "Spinner",
+    "package": "unknown",
+    "tags": {
+      "default": {
+        "name": "default",
+        "value": "cool",
+      },
+    },
+  },
 ]
 `;

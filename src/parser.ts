@@ -5,7 +5,8 @@ import {
   Property,
   PropertyType,
   ComponentDoc,
-  ElementProperty
+  ElementProperty,
+  TemplateOnlyComponent
 } from './types';
 
 export default class Parser {
@@ -15,7 +16,38 @@ export default class Parser {
     this.checker = checker;
   }
 
-  getComponentDoc(component: ts.ClassDeclaration): ComponentDoc {
+  findTOCSymbol = (node: ts.Node): ts.Symbol | undefined => {
+    if (ts.isVariableDeclaration(node)) {
+      const symbol = this.checker.getSymbolAtLocation(node.name);
+
+      if (symbol) {
+        return symbol;
+      }
+    }
+
+    return ts.forEachChild(node, this.findTOCSymbol);
+  };
+
+  getComponentDoc(
+    component: ts.ClassDeclaration | TemplateOnlyComponent
+  ): ComponentDoc {
+    if ('isTemplateOnly' in component) {
+      const symbol = this.findTOCSymbol(component.stmt);
+      const signature = this.getComponentSignature(component);
+
+      const output: ComponentDoc = {
+        ...extractPackageAndComponent(component.fileName),
+        name: symbol?.name || 'Component',
+        fileName: component.fileName,
+        Args: this.getSignatureArgs(signature, component.node),
+        Blocks: this.getSignatureBlocks(signature, component.node),
+        Element: this.getSignatureElement(signature, component.node),
+        ...this.getDocumentationFromSymbol(symbol)
+      };
+
+      return output;
+    }
+
     const type = this.checker.getTypeAtLocation(component);
     const signature = this.getComponentSignature(component);
     const fileName = component.getSourceFile().fileName;
@@ -33,8 +65,16 @@ export default class Parser {
     return output;
   }
 
-  getComponentSignature(component: ts.ClassDeclaration): ts.Type | undefined {
-    const signature = this.extractTypeParameterFromClass(component);
+  getComponentSignature(
+    component: ts.ClassDeclaration | TemplateOnlyComponent
+  ): ts.Type | undefined {
+    let signature: ts.TypeNode | undefined;
+
+    if ('isTemplateOnly' in component) {
+      signature = this.extractTypeParameterFromTOC(component.node);
+    } else {
+      signature = this.extractTypeParameterFromClass(component);
+    }
 
     if (signature) {
       return this.checker.getTypeAtLocation(signature);
@@ -177,6 +217,18 @@ export default class Parser {
     return undefined;
   }
 
+  extractTypeParameterFromTOC(
+    node: ts.TypeReferenceNode
+  ): ts.TypeNode | undefined {
+    if (node.typeArguments?.length) {
+      const typeArgument = node.typeArguments?.[0];
+
+      return typeArgument;
+    }
+
+    return undefined;
+  }
+
   getPropertyType(
     symbol: ts.Symbol | undefined,
     type: ts.Type,
@@ -290,14 +342,22 @@ export default class Parser {
     return false;
   }
 
-  // We consider a component a class declaration that has "args" property
-  isComponent(component: ts.ClassDeclaration): boolean {
+  // We consider a component a class declaration that has "args" property or a template only component
+  isComponent(component: ts.ClassDeclaration | TemplateOnlyComponent): boolean {
+    if ('isTemplateOnly' in component) {
+      return true;
+    }
+
     const componentType = this.checker.getTypeAtLocation(component);
 
     return !!componentType.getProperty('args');
   }
 
-  getDocumentationFromSymbol(symbol: ts.Symbol): DocumentationComment {
+  getDocumentationFromSymbol(symbol?: ts.Symbol): DocumentationComment {
+    if (!symbol) {
+      return { description: '', tags: {} };
+    }
+
     let description = ts.displayPartsToString(
       symbol.getDocumentationComment(this.checker)
     );

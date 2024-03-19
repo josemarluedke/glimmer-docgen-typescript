@@ -9,7 +9,8 @@ import {
   ComponentDoc,
   Property,
   PropertyType,
-  ElementProperty
+  ElementProperty,
+  TemplateOnlyComponent
 } from './types';
 
 const DEFAULT_IGNORE = [
@@ -20,6 +21,20 @@ const DEFAULT_IGNORE = [
   '.git/**',
   'dist/**'
 ];
+
+function findTOCUsage(node: ts.Node): ts.TypeReferenceNode | undefined {
+  // Check if this node is a TypeReferenceNode and its typeName is "TOC"
+  if (
+    ts.isTypeReferenceNode(node) &&
+    ts.isIdentifier(node.typeName) &&
+    node.typeName.text === 'TOC'
+  ) {
+    return node;
+  }
+
+  // Continue traversing the tree
+  return ts.forEachChild(node, findTOCUsage);
+}
 
 export function parse(sources: Source[]): ComponentDoc[] {
   const components: ComponentDoc[] = [];
@@ -47,7 +62,7 @@ export function parse(sources: Source[]): ComponentDoc[] {
     const checker = program.getTypeChecker();
     const parser = new Parser(checker);
 
-    const maybeComponents: ts.ClassDeclaration[] = [];
+    const maybeComponents: (ts.ClassDeclaration | TemplateOnlyComponent)[] = [];
 
     filePaths
       .map((filePath) => program.getSourceFile(filePath))
@@ -59,15 +74,23 @@ export function parse(sources: Source[]): ComponentDoc[] {
         sourceFile.statements.forEach((stmt) => {
           if (ts.isClassDeclaration(stmt)) {
             maybeComponents.push(stmt);
+          } else {
+            const templateOnlyComponent = findTOCUsage(stmt);
+            if (templateOnlyComponent) {
+              maybeComponents.push({
+                isTemplateOnly: true,
+                fileName: sourceFile.fileName,
+                node: templateOnlyComponent,
+                stmt: stmt
+              });
+            }
           }
         });
       });
 
     components.push(
       ...maybeComponents
-        .filter(
-          (declaration) => declaration.name && parser.isComponent(declaration)
-        )
+        .filter((declaration) => parser.isComponent(declaration))
         .map((component) => parser.getComponentDoc(component))
         .map((component) => {
           return {

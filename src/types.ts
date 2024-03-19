@@ -73,3 +73,10 @@ export interface ComponentDoc extends DocumentationComment {
   Blocks: Property[];
   Element: ElementProperty | undefined;
 }
+
+export interface TemplateOnlyComponent {
+  fileName: string;
+  isTemplateOnly: true;
+  node: ts.TypeReferenceNode;
+  stmt: ts.Statement;
+}
