@@ -27,7 +27,7 @@ function inspect(obj: unknown): void {
       // pattern: 'test.js'
       root: path.resolve(path.join(__dirname, '../../frontile')),
       // pattern: 'packages/*/declarations/components/*.d.ts'
-      pattern: 'packages/overlays/declarations/components/popover.d.ts'
+      pattern: 'packages/utilities/declarations/components/spinner.d.ts'
     }
     // {
     //   options: {
