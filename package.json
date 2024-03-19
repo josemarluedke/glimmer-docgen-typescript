@@ -1,6 +1,6 @@
 {
   "name": "glimmer-docgen-typescript",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "private": false,
   "description": "Extract information from Glimmer components to generate documentation using typescript parser/checker",
   "repository": "https://github.com/josemarluedke/glimmer-docgen-typescript",
